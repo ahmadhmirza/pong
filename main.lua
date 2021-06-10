@@ -21,6 +21,11 @@ function love.load()
     -- linear: Scale image with linear interpolation - smoothed image
     -- nearest: Scale image with nearest neighbor interpolation - more grainy
     love.graphics.setDefaultFilter('nearest', 'nearest')
+    -- Set custom fonth
+    smallFont = love.graphics.newFont('font.ttf', 8)
+
+    -- set LÖVE2D's active font to the smallFont obect
+    love.graphics.setFont(smallFont)
 
     -- render the window using the virtual resolution defined using push library.
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
