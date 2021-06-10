@@ -51,6 +51,16 @@ end
 --]]
 function love.draw()
     push:apply('start') -- begin rendering at virtual resolution
-    love.graphics.printf('Hello World!', 0, VIRTUAL_HEIGHT / 2 - 6, VIRTUAL_WIDTH, 'center')
+
+    -- love.graphics.clear(40/255, 45/255, 52/255, 255/255) --Clears the screen or active Canvas to the specified color.
+
+    -- draw welcome text toward the top of the screen
+    love.graphics.printf('Hello Pong!', 0, 20, VIRTUAL_WIDTH, 'center')
+
+    -- paddles and ball are rectangles of different dimensions
+    love.graphics.rectangle('fill', 10, 30, 5, 20) -- Left paddle
+    love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 50, 5, 20) --Right paddle
+    love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4) --ball (center)
+
     push:apply('end')
 end
