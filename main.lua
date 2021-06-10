@@ -3,17 +3,30 @@
     ahmadhasanmirza@gmail.com
 ]]
 
+-- push resolution-handling library that allows you to focus on making your game with a fixed resolution.
+-- https://github.com/Ulydev/push
+push = require 'push'
+
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
+
+VIRTUAL_WIDTH = 432
+VIRTUAL_HEIGHT = 243
 
 --[[
     Funtion to initialize the game at startup.
 ]]
 function love.load()
-    love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {
+    -- set the default filter.
+    -- linear: Scale image with linear interpolation - smoothed image
+    -- nearest: Scale image with nearest neighbor interpolation - more grainy
+    love.graphics.setDefaultFilter('nearest', 'nearest')
+
+    -- render the window using the virtual resolution defined using push library.
+    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = false,
-        vsync = true -- graphics technology that synchronizes the frame rate of a game with the monitor's refresh rate
+        vsync = true
     })
 end
 
