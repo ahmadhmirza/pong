@@ -30,10 +30,22 @@ function love.load()
     })
 end
 
+
+--[[
+    Function for handling keyboard inputs, 
+    the function is called by LÖVE2D on each frame
+]]
+function love.keypressed(key)
+    if key == 'escape' then
+        love.event.quit()
+    end
+end
+
 --[[
     Called after update by LÖVE2D, used to render stuff on the screen.
 --]]
 function love.draw()
-    love.graphics.printf(
-        'Hello World!', 0, WINDOW_HEIGHT / 2 - 6, WINDOW_WIDTH, 'center')
+    push:apply('start') -- begin rendering at virtual resolution
+    love.graphics.printf('Hello World!', 0, VIRTUAL_HEIGHT / 2 - 6, VIRTUAL_WIDTH, 'center')
+    push:apply('end')
 end
