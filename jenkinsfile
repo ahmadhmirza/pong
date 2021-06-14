@@ -21,10 +21,13 @@ pipeline {
         // 3. Dummy deploy
         // Print a message (only done if the build is stable)
         stage ('Deploy') {
-            when { not { equals expected: 'UNSTABLE'
-            steps {
-                echo 'Deploying the project gently...'
+            when { 
+                not { 
+                    equals expected: 'UNSTABLE'
+                    steps {
+                        echo 'Deploying the project gently...'
+                    }
+                }
             }
         }
     }
-}
