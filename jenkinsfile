@@ -39,7 +39,6 @@ pipeline {
                 } 
                 steps {
                     echo 'Deploying the project gently...'
-                    currentBuild.result='SUCCESS'
                     exit 0
                 }
         }
