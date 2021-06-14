@@ -23,7 +23,7 @@ pipeline {
         stage ('Deploy') {
             when {
                 not { 
-                    equals expected: 'UNSTABLE'
+                    equals expected: 'UNSTABLE', actual:  currentBuild.result='UNSTABLE'
                     }
             } 
                 
