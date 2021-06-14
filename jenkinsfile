@@ -14,7 +14,19 @@ pipeline {
                 script {
                     if (fileExists('main.lua') == false) {
                         unstable('Main.lua file not found!')
-                    }
+                    } 
+                }
+            }
+            post {
+                success{
+                    echo "main.lua is available"
+                    currentBuild.result='SUCCESS'
+                }
+                failiure{
+                    error "main.lua is not available"
+                }
+                unstable{
+                    error "build unstable"
                 }
             }
         }
@@ -23,13 +35,13 @@ pipeline {
         stage ('Deploy') {
             when {
                 not { 
-                    equals expected: 'UNSTABLE', actual:  currentBuild.result='UNSTABLE'
+                    equals expected: 'UNSTABLE', actual:  currentBuild.result
                     }
-            } 
-                
-                    steps {
-                        echo 'Deploying the project gently...'
-                    }
+                } 
+                steps {
+                    echo 'Deploying the project gently...'
+                    exit 0
+                }
         }
     }
 }
