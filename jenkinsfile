@@ -22,7 +22,7 @@ pipeline {
                     echo "main.lua is available"
                     currentBuild.result='SUCCESS'
                 }
-                failiure{
+                failure{
                     error "main.lua is not available"
                 }
                 unstable{
